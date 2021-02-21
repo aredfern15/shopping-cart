@@ -84,4 +84,10 @@ Within an active virtual environment of choice ("base" or project-specific), dem
 
 python shopping_cart.py
 
-If you see the provided "products" data structure, you're ready to move on to project development. This would be a great time to make any desired modifications to your project's "README.md" file, such as adding instructions to tell someone else how to download, setup and run your app. When you're done, make your first commit, with a message like "Setup the repo".
+If you see the provided "products" data structure, you're ready to move on to project development. If this works, then make your first commit, with a message like "Setup the repo".
+
+# Data Setup
+
+The provided code includes a variable called "products" which facilitates management of the products inventory from within the application's source code.
+
+NOTE: If you'd like to use an alternative storage mechanism for the products inventory, like a CSV file or a Google Sheet document, reference the respective further exploration challenges.
