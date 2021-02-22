@@ -23,41 +23,25 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
-
-    Param: my_price (int or float) like 4000.444444
-
-    Example: to_usd(4000.444444)
-
-    Returns: $4,000.44
-    """
-    return f"${my_price:,.2f}" #> $12,000.71
-
-
-# TODO: write some Python code here to produce the desired output
-
-# print(products)
-
 #
 # INFO CAPTURE / INPUT
 #
 
-selected_id = input("Please input a product identifier: ") #> "9" (string)
-#print(selected_id)
-#print(type(selected_id))
-matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
-matching_product = matching_products[0]
-print(matching_product)
-print(type(matching_product))
-print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
-
+while True:
+    pass
+    selected_id = input("Please input a product identifier: ") #> "9" (string)
+    #> "Done"
+    if selected_id == "DONE": 
+        break 
+    else: 
+        matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product = matching_products[0] 
+        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
 
 #
-# INFO CAPTURE / OUTPUT
+# INFO DISPLAY / OUTPUT
 #
 
 #A grocery store name of your choice 
