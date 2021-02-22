@@ -28,33 +28,39 @@ products = [
 #
 
 total_price = 0 
+selected_ids = []
 
 while True:
-    pass
     selected_id = input("Please input a product identifier: ") #> "9" (string)
     #> "Done"
     if selected_id == "DONE": 
         break 
     else: 
-        matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
-        matching_product = matching_products[0] 
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
-
-
+        #matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
+        #matching_product = matching_products[0] 
+        #total_price = total_price + matching_product["price"]
+        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+        selected_ids.append(selected_id)
 
 #
 # INFO DISPLAY / OUTPUT
 #
 
+#print(selected_ids)
 
-print("TOTAL PRICE: " + str(total_price))
+for selected_id in selected_ids:  
+        matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product = matching_products[0] 
+        total_price = total_price + matching_product["price"]
+        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
-#A grocery store name of your choice 
-# A grocery store phone number and/or website URL and/or address of choice 
-# The date and time of the beginning of the checkout process
+print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
+
+## A grocery store name of your choice 
+## A grocery store phone number and/or website URL and/or address of choice 
+## The date and time of the beginning of the checkout process
 # The name and price of each shopping cart item, price being formatted... 
 # The total cost of all shopping cart items
-# The amount of tax owed 
+## The amount of tax owed 
 # The total amount owed 
-# A friendly message thanking the customer 
+## A friendly message thanking the customer 
