@@ -23,9 +23,27 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+
+    Param: my_price (int or float) like 4000.444444
+
+    Example: to_usd(4000.444444)
+
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
+#print("---------------------------")
+#print("THERE ARE", len(products), "PRODUCTS:")
+#print("---------------------------")
+#for item in products: 
+#    print(item["id"], item ["name"], to_usd(item["price"]))
 #
 # INFO CAPTURE / INPUT
 #
+
 
 total_price = 0 
 selected_ids = []
@@ -42,6 +60,23 @@ while True:
         #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
         selected_ids.append(selected_id)
 
+print("---------------------------")
+print("REDFERN GROCERY STORE")
+print("---------------------------")
+print("Web: www.redferngrocerystore.com")
+print("Phone: 987-654-3210") 
+print("Address: 123 Hoya Ln, Washington, D.C. 20057")
+
+#Date and Time from https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
+import datetime  
+    
+# using now() to get current time  
+current_time = datetime.datetime.now()  
+    
+print ("Checkout Date and Time: "
+                                    , end = "")  
+print (current_time)  
+print("---------------------------")
 #
 # INFO DISPLAY / OUTPUT
 #
@@ -53,14 +88,24 @@ for selected_id in selected_ids:
         matching_product = matching_products[0] 
         total_price = total_price + matching_product["price"]
         print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+print("---------------------------")
 
-print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
+subtotal = str(total_price)
+#print("SUBTOTAL: " + str(total_price)) #TODO Format as USD
+print("SUBTOTAL: " + to_usd(float(subtotal)))
+#Washington, DC has a sales tax of 6%
+sales_tax = float(subtotal) * .06
+print("WASHINGTON D.C. SALES TAX (6%):", to_usd(sales_tax))
+price_total = sales_tax + float(subtotal)
+print("TOTAL: " + to_usd(price_total))
+print("---------------------------")
+print("THANK YOU FOR SHOPPING WITH US TODAY. WE LOOK FORWARD TO SEEING YOU AGAIN SOON!")
+#print("Thank you for shopping with us today. We look forward to seeing you again soon!")
+print("---------------------------")
 
-## A grocery store name of your choice 
-## A grocery store phone number and/or website URL and/or address of choice 
-## The date and time of the beginning of the checkout process
-# The name and price of each shopping cart item, price being formatted... 
-# The total cost of all shopping cart items
+
+
+
+
 ## The amount of tax owed 
 # The total amount owed 
-## A friendly message thanking the customer 
