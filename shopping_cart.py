@@ -45,15 +45,13 @@ total_price = 0
 selected_ids = []
 
 while True:
-    selected_id = input("Please input a product identifier: ") #> "9" (string)
-    #> "Done"
+    selected_id = input("Please input a product identifier (1-20), or 'DONE' when finsihed: ") #> "9" (string)
     if selected_id == "DONE": 
         break 
+    elif int(selected_id) <= 0 or int(selected_id) > 20:
+        selected_id = input("Oops! The number selected is invalid. Please select a number between 1-20: ")
+        selected_ids.append(selected_id)
     else: 
-        #matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
-        #matching_product = matching_products[0] 
-        #total_price = total_price + matching_product["price"]
-        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
         selected_ids.append(selected_id)
 
 print("---------------------------")
@@ -63,7 +61,7 @@ print("Web: www.redferngrocerystore.com")
 print("Phone: 987-654-3210") 
 print("Address: 123 Hoya Ln, Washington, D.C. 20057")
 
-#Date and Time from https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
+#Date and Time from https://www.programiz.com/python-programming/datetime/current-datetime
 from datetime import datetime  
     
 # using now() to get current time  
@@ -96,5 +94,4 @@ price_total = sales_tax + float(subtotal)
 print("TOTAL: " + to_usd(price_total))
 print("---------------------------")
 print("THANK YOU FOR SHOPPING WITH US TODAY. WE LOOK FORWARD TO SEEING YOU AGAIN SOON!")
-#print("Thank you for shopping with us today. We look forward to seeing you again soon!")
 print("---------------------------")
