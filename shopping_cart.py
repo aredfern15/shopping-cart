@@ -35,11 +35,7 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
-#print("---------------------------")
-#print("THERE ARE", len(products), "PRODUCTS:")
-#print("---------------------------")
-#for item in products: 
-#    print(item["id"], item ["name"], to_usd(item["price"]))
+
 #
 # INFO CAPTURE / INPUT
 #
@@ -68,14 +64,14 @@ print("Phone: 987-654-3210")
 print("Address: 123 Hoya Ln, Washington, D.C. 20057")
 
 #Date and Time from https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
-import datetime  
+from datetime import datetime  
     
 # using now() to get current time  
-current_time = datetime.datetime.now()  
-    
-print ("Checkout Date and Time: "
-                                    , end = "")  
-print (current_time)  
+now = datetime.now()
+#print("now =", now)
+
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print("Check Date and Time:", dt_string) 
 print("---------------------------")
 #
 # INFO DISPLAY / OUTPUT
@@ -95,17 +91,10 @@ subtotal = str(total_price)
 print("SUBTOTAL: " + to_usd(float(subtotal)))
 #Washington, DC has a sales tax of 6%
 sales_tax = float(subtotal) * .06
-print("WASHINGTON D.C. SALES TAX (6%):", to_usd(sales_tax))
+print("SALES TAX (6%):", to_usd(sales_tax))
 price_total = sales_tax + float(subtotal)
 print("TOTAL: " + to_usd(price_total))
 print("---------------------------")
 print("THANK YOU FOR SHOPPING WITH US TODAY. WE LOOK FORWARD TO SEEING YOU AGAIN SOON!")
 #print("Thank you for shopping with us today. We look forward to seeing you again soon!")
 print("---------------------------")
-
-
-
-
-
-## The amount of tax owed 
-# The total amount owed 

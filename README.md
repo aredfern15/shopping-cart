@@ -8,19 +8,17 @@ In the Shopping Cart Exercise, we will develop a Python application that will he
 
 Before starting the actual exercise, we need to download, setup and run the application. 
 
-First, we need to go to GitHub and follow the "Setup" instructions below. After completing that step, we need to have make a local copy on your own computer to develop. 
+First, we need to go to GitHub and follow the "Setup" instructions below. After completing that step, we need to make a local copy on your own computer to develop. 
 
-Throughout the entire development, remember to use the command-line or GitHub Desktop software to intermittently "commit", or save new versions of, your code. And remember to push / sync / upload your work back up to your remote project repository on GitHub at least once before you're done.
-
-If you are able to implement the basic requirements with relative ease, or if you are interested in a challenge, consider addressing one or more of the "Further Exploration Challenges". Otherwise, if you need help breaking the problem up into more manageable pieces, consult the "Guided Checkpoints". And if you would like a narrated walkthrough, consult the "Guided Screencast".
+Remember to use the command-line or GitHub Desktop to "commit", or save new versions of, your code. And remember to "push" to your remote project repository on GitHub at least once before you're done.
 
 # Setup
 
 # Repo Setup 
 
-Use the GitHub online interface to create a new remote project repository called something like "shopping-cart". When prompted by the GitHub online interface, let's get in the habit of adding a "README.md" file and a Python-flavored ".gitignore" file (and also optionally a "LICENSE") during the repo creation process. After this process is complete, you should be able to view the repo on GitHub at an address like https://github.com/YOUR_USERNAME/shopping-cart.
+To setup, use GitHub to create a new remote project repository called  "shopping-cart". After naming the repository, name the "README.md" file and a Python-flavored ".gitignore" file during the repo creation process. After this process is complete, you should be able to view the repo on GitHub. 
 
-After creating the remote repo, use GitHub Desktop software or the command-line to download or "clone" it onto your computer. Choose a familiar download location like the Desktop.
+After creating the remote repo, use GitHub Desktop to download or "clone" it onto your computer. Choose a familiar download location like the Desktop.
 
 After cloning the repo, navigate there from the command-line:
 cd ~/Desktop/shopping-cart
@@ -70,11 +68,11 @@ def to_usd(my_price):
 
 print(products)
 
-Make sure to save Python files like this whenever you're done editing them. After setting up a virtual environment, we will be ready to run this file.
+Remember to save your files to ensure that the contents remain in the file. After setting up a virtual environment, we will be ready to run this file.
 
 # Enviornment Setup 
 
-It is possible to complete this project using the "base" Anaconda environment, because the basic requirements don't require any third-party packages. However if you eventually end up tackling bonus challenges that require third-party packages, then you'll want to create and activate a new Anaconda virtual environment, and use a "requirements.txt" file approach to installing your packages:
+You will not need to use any third-party packages for this project. However, if you desire to complete the extra credit, you will eventually need to use the "base" Anaconda environment. Afterwards, you'll want to create and activate a new Anaconda virtual environment, and use a "requirements.txt" file approach to installing your packages (such as pip):
 
     ## IF USING THIRD-PARTY PACKAGES, USE A NEW ENV:
 conda create -n shopping-env python=3.8 
@@ -90,4 +88,74 @@ If you see the provided "products" data structure, you're ready to move on to pr
 
 The provided code includes a variable called "products" which facilitates management of the products inventory from within the application's source code.
 
-NOTE: If you'd like to use an alternative storage mechanism for the products inventory, like a CSV file or a Google Sheet document, reference the respective further exploration challenges.
+# Info Input 
+
+We want to set up the project first inputting the information needed to scan and record the products purchased. As seen above, the information for products and the USD have been placed in your file already as a starting point. 
+
+Now, we need to create product identifiers that will allow people to know what they have purchased. Also, we need to prepare for invalid inputs (those that do not fall under the provided products list) and a system that allows people to say "DONE" after that have scanned the appropriate products. The following code will allow us to do that: 
+
+total_price = 0 
+selected_ids = []
+
+while True:
+    selected_id = input("Please input a product identifier: ") #> "9" (string)
+    #> "Done"
+    if selected_id == "DONE": 
+        break 
+    else: 
+        #matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
+        #matching_product = matching_products[0] 
+        #total_price = total_price + matching_product["price"]
+        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+        selected_ids.append(selected_id)
+
+# Info Outputs 
+
+After successfully scanning the products, we need to finish the products by producing a receipt that displays store infromation (store name, phone number, store address), displays the current checkout date and time, displays the names and prices of all the scanned products, and displays tax and totals. The following code will allow you to do that: 
+
+print("---------------------------")
+print("REDFERN GROCERY STORE")
+print("---------------------------")
+print("Web: www.redferngrocerystore.com")
+print("Phone: 987-654-3210") 
+print("Address: 123 Hoya Ln, Washington, D.C. 20057")
+
+#Date and Time from https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
+import datetime  
+    
+# using now() to get current time  
+current_time = datetime.datetime.now()  
+    
+print ("Checkout Date and Time: "
+                                    , end = "")  
+print (current_time)  
+print("---------------------------")
+#
+# INFO DISPLAY / OUTPUT
+#
+
+#print(selected_ids)
+
+for selected_id in selected_ids:  
+        matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product = matching_products[0] 
+        total_price = total_price + matching_product["price"]
+        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+print("---------------------------")
+
+subtotal = str(total_price)
+#print("SUBTOTAL: " + str(total_price)) #TODO Format as USD
+print("SUBTOTAL: " + to_usd(float(subtotal)))
+#Washington, DC has a sales tax of 6%
+sales_tax = float(subtotal) * .06
+print("WASHINGTON D.C. SALES TAX (6%):", to_usd(sales_tax))
+price_total = sales_tax + float(subtotal)
+print("TOTAL: " + to_usd(price_total))
+print("---------------------------")
+print("THANK YOU FOR SHOPPING WITH US TODAY. WE LOOK FORWARD TO SEEING YOU AGAIN SOON!")
+#print("Thank you for shopping with us today. We look forward to seeing you again soon!")
+print("---------------------------")
+
+# Finish 
+
+After you do that, the preliminary project is finished. You can now either turn in the project via Gia repository which reflects an incremental history or begin to try the extra credit bonus. 
