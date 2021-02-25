@@ -27,7 +27,7 @@ Use your text editor or the command-line to create a file in that repo called "s
 
     ## shopping_cart.py
 
-##products = [
+    ##products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
@@ -48,10 +48,10 @@ Use your text editor or the command-line to create a file in that repo called "s
     {"id":18, "name": "Pizza for One Suprema Frozen Pizza", "department": "frozen", "aisle": "frozen pizza", "price": 12.50},
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
-] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+    ]   # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-def to_usd(my_price):
+    def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
 
@@ -66,7 +66,6 @@ def to_usd(my_price):
 
     ## TODO: write some Python code here to produce the desired output
 
-print(products)
 
 Remember to save your files to ensure that the contents remain in the file. After setting up a virtual environment, we will be ready to run this file.
 
