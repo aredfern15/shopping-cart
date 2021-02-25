@@ -27,7 +27,7 @@ Use your text editor or the command-line to create a file in that repo called "s
 
     ## shopping_cart.py
 
-products = [
+##products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
@@ -92,70 +92,12 @@ The provided code includes a variable called "products" which facilitates manage
 
 We want to set up the project first inputting the information needed to scan and record the products purchased. As seen above, the information for products and the USD have been placed in your file already as a starting point. 
 
-Now, we need to create product identifiers that will allow people to know what they have purchased. Also, we need to prepare for invalid inputs (those that do not fall under the provided products list) and a system that allows people to say "DONE" after that have scanned the appropriate products. The following code will allow us to do that: 
+Now, we need to create product identifiers that will allow people to know what they have purchased. Also, we need to prepare for invalid inputs (those that do not fall under the provided products list) and a system that allows people to say "DONE" after that have scanned the appropriate products. Be sure to identify the selected products in your cart. HINT: You want to use  "while True", "if" and "else" to guide you. 
 
-total_price = 0 
-selected_ids = []
-
-while True:
-    selected_id = input("Please input a product identifier: ") #> "9" (string)
-    #> "Done"
-    if selected_id == "DONE": 
-        break 
-    else: 
-        #matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
-        #matching_product = matching_products[0] 
-        #total_price = total_price + matching_product["price"]
-        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
-        selected_ids.append(selected_id)
 
 # Info Outputs 
 
-After successfully scanning the products, we need to finish the products by producing a receipt that displays store infromation (store name, phone number, store address), displays the current checkout date and time, displays the names and prices of all the scanned products, and displays tax and totals. The following code will allow you to do that: 
+After successfully scanning the products, we need to finish the products by producing a receipt that displays store infromation (store name, phone number, store address), displays the current checkout date and time, displays the names and prices of all the scanned products, and displays tax and totals. HINT: for finding the date and time, reference https://www.geeksforgeeks.org/get-current-date-and-time-using-python/. When solving for the tax, reference the "usd" notes that you first downloaded above.
 
-print("---------------------------")
-print("REDFERN GROCERY STORE")
-print("---------------------------")
-print("Web: www.redferngrocerystore.com")
-print("Phone: 987-654-3210") 
-print("Address: 123 Hoya Ln, Washington, D.C. 20057")
-
-#Date and Time from https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
-import datetime  
-    
-# using now() to get current time  
-current_time = datetime.datetime.now()  
-    
-print ("Checkout Date and Time: "
-                                    , end = "")  
-print (current_time)  
-print("---------------------------")
-#
-# INFO DISPLAY / OUTPUT
-#
-
-#print(selected_ids)
-
-for selected_id in selected_ids:  
-        matching_products =  [p for p in products if str(p["id"]) == str(selected_id)]
-        matching_product = matching_products[0] 
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
-print("---------------------------")
-
-subtotal = str(total_price)
-#print("SUBTOTAL: " + str(total_price)) #TODO Format as USD
-print("SUBTOTAL: " + to_usd(float(subtotal)))
-#Washington, DC has a sales tax of 6%
-sales_tax = float(subtotal) * .06
-print("WASHINGTON D.C. SALES TAX (6%):", to_usd(sales_tax))
-price_total = sales_tax + float(subtotal)
-print("TOTAL: " + to_usd(price_total))
-print("---------------------------")
-print("THANK YOU FOR SHOPPING WITH US TODAY. WE LOOK FORWARD TO SEEING YOU AGAIN SOON!")
-#print("Thank you for shopping with us today. We look forward to seeing you again soon!")
-print("---------------------------")
-
-# Finish 
 
 After you do that, the preliminary project is finished. You can now either turn in the project via Gia repository which reflects an incremental history or begin to try the extra credit bonus. 
